@@ -1,6 +1,3 @@
-Certainly! Below is a template for a README.md file for your project. You can customize it based on the specifics of your project:
-
-```markdown
 # Project Title
 
 Short description of your project.
@@ -114,6 +111,3 @@ Guidelines for contributing to the project.
 ## License
 
 State the license under which your project is released.
-```
-
-Make sure to replace placeholder text with the actual details relevant to your project.
