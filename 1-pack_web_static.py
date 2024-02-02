@@ -1,19 +1,19 @@
 #!/usr/bin/python3
-'''Fabric Module'''
 from fabric.api import local
-import datetime
-from os import path
+from time import strftime
+from datetime import date
 
 
 def do_pack():
-    '''Create a tarball file of web static'''
-    fecha = datetime.datetime.now().isoformat()
-    fecha = fecha[:-7].replace(":", "").replace(
-        ".", "").replace("T", "").replace("-", "")
-    filename = "versions/web_static_" + fecha + ".tgz"
-    if not path.exists('versions'):
-        if local("mkdir -p versions").failed:
-            return None
-    if local("tar -czvf {} web_static".format(filename)).failed:
+    """ A script that generates archive the contents of web_static folder"""
+
+    filename = strftime("%Y%m%d%H%M%S")
+    try:
+        local("mkdir -p versions")
+        local("tar -czvf versions/web_static_{}.tgz web_static/"
+              .format(filename))
+
+        return "versions/web_static_{}.tgz".format(filename)
+
+    except Exception as e:
         return None
-    return filename
